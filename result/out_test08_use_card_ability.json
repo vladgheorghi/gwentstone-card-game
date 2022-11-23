@@ -23,8 +23,6 @@
   "output" : 1
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 0,
@@ -32,7 +30,9 @@
     "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
     "colors" : [ "Black", "White", "Red" ],
     "name" : "The Cursed One"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getCardsInHand",
   "playerIdx" : 1,
@@ -58,8 +58,6 @@
   "output" : 1
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 0,
@@ -67,7 +65,9 @@
     "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
     "colors" : [ "Black", "White", "Red" ],
     "name" : "The Cursed One"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,

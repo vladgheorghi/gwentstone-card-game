@@ -1,7 +1,5 @@
 [ {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 0,
@@ -9,11 +7,11 @@
     "description" : "Standard card: Thrown from the highest cliff, revenge will be his glory.",
     "colors" : [ "Pink", "Purple" ],
     "name" : "The Cursed One"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 1,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 6,
@@ -21,17 +19,12 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Black", "Yellow" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 1,
+  "y" : 0
 }, {
   "command" : "getFrozenCardsOnTable",
-  "output" : [ {
-    "mana" : 1,
-    "attackDamage" : 1,
-    "health" : 1,
-    "description" : "Standard card: Thrown from the highest cliff, revenge will be his glory.",
-    "colors" : [ "Pink", "Purple" ],
-    "name" : "The Cursed One"
-  } ]
+  "output" : [ ]
 }, {
   "command" : "getPlayerTurn",
   "output" : 2

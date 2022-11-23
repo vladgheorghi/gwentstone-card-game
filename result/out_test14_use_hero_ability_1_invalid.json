@@ -8,8 +8,6 @@
   "error" : "Not enough mana to use hero's ability."
 }, {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 0,
@@ -17,11 +15,11 @@
     "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
     "colors" : [ "Yellow", "White" ],
     "name" : "Disciple"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 2,
@@ -29,7 +27,9 @@
     "description" : "Standard card: Trained by the best, nothing will catch him off-guard.",
     "colors" : [ "Black", "White" ],
     "name" : "Sentinel"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
@@ -38,8 +38,6 @@
   "output" : 1
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 2,
@@ -47,11 +45,11 @@
     "description" : "Standard card: Trained by the best, nothing will catch him off-guard.",
     "colors" : [ "Black", "White" ],
     "name" : "Sentinel"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 0,
@@ -59,7 +57,9 @@
     "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
     "colors" : [ "Yellow", "White" ],
     "name" : "Disciple"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "useHeroAbility",
   "affectedRow" : 2,

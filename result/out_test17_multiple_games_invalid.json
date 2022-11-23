@@ -1,7 +1,5 @@
 [ {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 5,
@@ -9,7 +7,9 @@
     "description" : "Premium card: Fear him. Your last breath is now.",
     "colors" : [ "Red", "Blue", "Pink" ],
     "name" : "Berserker"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "getEnvironmentCardsInHand",
   "playerIdx" : 2,
@@ -19,8 +19,6 @@
   "output" : 2
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 6,
@@ -28,7 +26,9 @@
     "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getEnvironmentCardsInHand",
   "playerIdx" : 1,
@@ -56,8 +56,6 @@
   "output" : [ ]
 }, {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 5,
@@ -65,7 +63,9 @@
     "description" : "Premium card: Fear him. Your last breath is now.",
     "colors" : [ "Red", "Blue", "Pink" ],
     "name" : "Berserker"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
@@ -136,6 +136,15 @@
     "name" : "Disciple"
   } ]
 }, {
+  "command" : "getTotalGamesPlayed",
+  "output" : 1
+}, {
+  "command" : "getPlayerTwoWins",
+  "output" : 1
+}, {
+  "command" : "getPlayerOneWins",
+  "output" : 0
+}, {
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
@@ -166,8 +175,6 @@
   "output" : 1
 }, {
   "command" : "getCardAtPosition",
-  "x" : 1,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 5,
@@ -175,7 +182,9 @@
     "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
-  }
+  },
+  "x" : 1,
+  "y" : 0
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
@@ -197,8 +206,6 @@
   } ]
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
@@ -206,7 +213,9 @@
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Brown", "Blue" ],
     "name" : "Warden"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
@@ -232,11 +241,9 @@
     "x" : 1,
     "y" : 1
   },
-  "error" : "Attacked card is not of type 'Tank'"
+  "error" : "Attacked card is not of type 'Tank'."
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 7,
@@ -244,7 +251,9 @@
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Brown", "Blue" ],
     "name" : "Warden"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getEnvironmentCardsInHand",
   "playerIdx" : 1,
@@ -267,8 +276,6 @@
   } ]
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 5,
@@ -276,7 +283,9 @@
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Brown", "Blue" ],
     "name" : "Warden"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "gameEnded" : "Player one killed the enemy hero."
 }, {
@@ -342,4 +351,13 @@
     "colors" : [ "Green", "Black" ],
     "name" : "Heart Hound"
   } ]
+}, {
+  "command" : "getTotalGamesPlayed",
+  "output" : 2
+}, {
+  "command" : "getPlayerTwoWins",
+  "output" : 1
+}, {
+  "command" : "getPlayerOneWins",
+  "output" : 1
 } ]

@@ -198,14 +198,14 @@ public class Command {
 
                 if (abAttacker.getName().equals("Disciple")) {
                     if (Functions.verifyAttackedCardOwner(playerTurn, action.getCardAttacked())) {
-                        cardUsesAbility.put("error", "Attacker card does not belong to the current player.");
+                        cardUsesAbility.put("error", "Attacked card does not belong to the current player.");
 
                         output.add(cardUsesAbility);
                         break;
                     }
                 } else {
                     if (!Functions.verifyAttackedCardOwner(playerTurn, action.getCardAttacked())) {
-                        cardUsesAbility.put("error", "Attacker card does not belong to the enemy.");
+                        cardUsesAbility.put("error", "Attacked card does not belong to the enemy.");
 
                         output.add(cardUsesAbility);
                         break;
@@ -277,7 +277,7 @@ public class Command {
                     coordHeroAttacker.put("y", action.getCardAttacker().getY());
                     useAttackHero.set("cardAttacker", coordHeroAttacker);
 
-                    useAttackHero.put("error", "Attacked card is not of type 'Tank'");
+                    useAttackHero.put("error", "Attacked card is not of type 'Tank'.");
 
                     output.add(useAttackHero);
                     break;
@@ -289,6 +289,8 @@ public class Command {
 
                 int heroHealth = players.get(otherPlayerHero).getHero().getHealth();
                 players.get(otherPlayerHero).getHero().setHealth(heroHealth - heroAttacker.getAttackDamage());
+
+                heroAttacker.setAttacked(true);
 
                 if (players.get(otherPlayerHero).getHero().getHealth() <= 0) {
                     if (playerTurn == 0) {
@@ -388,10 +390,11 @@ public class Command {
                 }
 
                 if (chosenEnCard.getName().equals("Heart Hound")) {
-                    if (!Functions.verifyMirrorRowFull(action.getAffectedRow(), playerTurn, table)) {
-                        useEnvironmentCard.put("error", "Cannot steal enemy card since the player's row is full");
+                    if (Functions.verifyMirrorRowFull(action.getAffectedRow(), playerTurn, table)) {
+                        useEnvironmentCard.put("error", "Cannot steal enemy card since the player's row is full.");
 
                         output.add(useEnvironmentCard);
+                        break;
                     }
                 }
 
@@ -542,16 +545,22 @@ public class Command {
                 ObjectNode getCardAtPosition = objectMapper.createObjectNode();
 
                 getCardAtPosition.put("command", command);
-                getCardAtPosition.put("x", action.getX());
-                getCardAtPosition.put("y", action.getY());
 
                 if (table.size() <= action.getX()) {
                     getCardAtPosition.put("output", "No card available at that position.");
+                    getCardAtPosition.put("x", action.getX());
+                    getCardAtPosition.put("y", action.getY());
+
+                    output.add(getCardAtPosition);
                     break;
                 }
 
                 if (table.get(action.getX()).size() <= action.getY()) {
                     getCardAtPosition.put("output", "No card available at that position.");
+                    getCardAtPosition.put("x", action.getX());
+                    getCardAtPosition.put("y", action.getY());
+
+                    output.add(getCardAtPosition);
                     break;
                 }
 
@@ -572,6 +581,9 @@ public class Command {
                 getCardAtPositionInfo.put("name", currentCard.getName());
 
                 getCardAtPosition.set("output", getCardAtPositionInfo);
+
+                getCardAtPosition.put("x", action.getX());
+                getCardAtPosition.put("y", action.getY());
 
                 output.add(getCardAtPosition);
                 break;
@@ -649,18 +661,24 @@ public class Command {
 
                 getTotalGamesPlayed.put("command", command);
                 getTotalGamesPlayed.put("output", players.get(0).getGamesPlayed());
+
+                output.add(getTotalGamesPlayed);
                 break;
             case "getPlayerOneWins":
                 ObjectNode getPlayerOneWins = objectMapper.createObjectNode();
 
                 getPlayerOneWins.put("command", command);
                 getPlayerOneWins.put("output", players.get(0).getGamesWon());
+
+                output.add(getPlayerOneWins);
                 break;
             case "getPlayerTwoWins":
                 ObjectNode getPlayerTwoWins = objectMapper.createObjectNode();
 
                 getPlayerTwoWins.put("command", command);
                 getPlayerTwoWins.put("output", players.get(1).getGamesWon());
+
+                output.add(getPlayerTwoWins);
                 break;
         }
     }

@@ -1,7 +1,5 @@
 [ {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 6,
@@ -9,11 +7,11 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 6,
@@ -21,7 +19,9 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -65,7 +65,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacker card does not belong to the enemy."
+  "error" : "Attacked card does not belong to the enemy."
 }, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
@@ -94,7 +94,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacker card does not belong to the current player."
+  "error" : "Attacked card does not belong to the current player."
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,

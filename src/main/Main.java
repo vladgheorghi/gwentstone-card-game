@@ -48,7 +48,6 @@ public final class Main {
      * @throws IOException in case of exceptions to reading / writing
      */
     public static void main(final String[] args) throws IOException {
-        int counter = 1;
         File directory = new File(CheckerConstants.TESTS_PATH);
         Path path = Paths.get(CheckerConstants.RESULT_PATH);
 
@@ -66,7 +65,7 @@ public final class Main {
             File out = new File(filepath);
             boolean isCreated = out.createNewFile();
             if (isCreated) {
-                action(file.getName(), filepath, counter++);
+                action(file.getName(), filepath);
             }
         }
 
@@ -79,7 +78,7 @@ public final class Main {
      * @throws IOException in case of exceptions to reading / writing
      */
     public static void action(final String filePath1,
-                              final String filePath2, int counter) throws IOException {
+                              final String filePath2) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Input inputData = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH + filePath1),
                 Input.class);
@@ -106,6 +105,11 @@ public final class Main {
         for (GameInput game : games) {
             StartGameInput startGame = game.getStartGame();
             ArrayList<ActionsInput> actions = game.getActions();
+
+            gamesPlayed++;
+
+            players.get(0).setGamesPlayed(gamesPlayed);
+            players.get(1).setGamesPlayed(gamesPlayed);
 
             /** Each player chooses his deck **/
             int p1DeckIdx = startGame.getPlayerOneDeckIdx();
@@ -188,12 +192,12 @@ public final class Main {
                     for (int i = 0; i < 4; i++)
                         for (Card card : table.get(i)) {
                             if (((Minion) card).getFrozen()) {
+                                int turnsSinceFrozen = ((Minion) card).getTurnsSinceFrozen();
+                                ((Minion) card).setTurnsSinceFrozen(turnsSinceFrozen + 1);
+
                                 if (((Minion) card).getTurnsSinceFrozen() == 2) {
                                     ((Minion) card).setTurnsSinceFrozen(0);
                                     ((Minion) card).setFrozen(false);
-                                } else {
-                                    int turnsSinceFrozen = ((Minion) card).getTurnsSinceFrozen();
-                                    ((Minion) card).setTurnsSinceFrozen(turnsSinceFrozen + 1);
                                 }
                             }
                         }
@@ -239,10 +243,6 @@ public final class Main {
                     }
                 }
             }
-            gamesPlayed++;
-
-            players.get(0).setGamesPlayed(gamesPlayed);
-            players.get(1).setGamesPlayed(gamesPlayed);
 
             Functions.resetPlayer(players.get(0));
             Functions.resetPlayer(players.get(1));

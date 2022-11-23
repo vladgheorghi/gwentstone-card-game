@@ -1,7 +1,5 @@
 [ {
   "command" : "getCardAtPosition",
-  "x" : 1,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 6,
@@ -9,11 +7,11 @@
     "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
     "colors" : [ "Black", "Yellow" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 1,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 2,
@@ -21,7 +19,9 @@
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "useHeroAbility",
   "affectedRow" : 3,
@@ -34,8 +34,6 @@
   "output" : 1
 }, {
   "command" : "getCardAtPosition",
-  "x" : 2,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 2,
@@ -43,11 +41,11 @@
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 1,
-  "y" : 0,
   "output" : {
     "mana" : 3,
     "attackDamage" : 7,
@@ -55,7 +53,9 @@
     "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
     "colors" : [ "Black", "Yellow" ],
     "name" : "The Ripper"
-  }
+  },
+  "x" : 1,
+  "y" : 0
 }, {
   "command" : "useHeroAbility",
   "affectedRow" : 3,

@@ -9,8 +9,6 @@
   } ]
 }, {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 2,
@@ -18,11 +16,11 @@
     "description" : "Standard card: A drink can always be served, with the blood of his enemies.",
     "colors" : [ "Red", "Blue", "Pink" ],
     "name" : "Berserker"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 1,
@@ -30,15 +28,15 @@
     "description" : "Premium card: His presence is not known even by ghosts, success at all costs.",
     "colors" : [ "Black", "White" ],
     "name" : "Sentinel"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getEnvironmentCardsInHand",
   "playerIdx" : 1,
   "output" : [ ]
 }, {
   "command" : "getCardAtPosition",
-  "x" : 3,
-  "y" : 0,
   "output" : {
     "mana" : 1,
     "attackDamage" : 1,
@@ -46,11 +44,11 @@
     "description" : "Premium card: His presence is not known even by ghosts, success at all costs.",
     "colors" : [ "Black", "White" ],
     "name" : "Sentinel"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
-  "x" : 0,
-  "y" : 0,
   "output" : {
     "mana" : 2,
     "attackDamage" : 2,
@@ -58,7 +56,9 @@
     "description" : "Standard card: A drink can always be served, with the blood of his enemies.",
     "colors" : [ "Red", "Blue", "Pink" ],
     "name" : "Berserker"
-  }
+  },
+  "x" : 0,
+  "y" : 0
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,

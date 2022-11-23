@@ -92,7 +92,7 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 25
+  "output" : 23
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ ], [ {
@@ -131,13 +131,6 @@
     "colors" : [ "Brown", "Blue" ],
     "name" : "Warden"
   } ], [ {
-    "mana" : 3,
-    "attackDamage" : 1,
-    "health" : 7,
-    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
-    "colors" : [ "Brown", "Black", "Grey" ],
-    "name" : "Goliath"
-  }, {
     "mana" : 4,
     "attackDamage" : 5,
     "health" : 4,
@@ -165,6 +158,13 @@
     "description" : "Premium card: Insanity is always an option, now it is an absolute.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
+  }, {
+    "mana" : 3,
+    "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
   } ], [ ] ]
 }, {
   "command" : "getCardsInHand",
@@ -186,11 +186,6 @@
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
-    "mana" : 2,
-    "description" : "Premium card: Your mind is ours. Your body is ours. Stop begging.",
-    "colors" : [ "Red", "White", "Grey" ],
-    "name" : "Heart Hound"
-  }, {
     "mana" : 1,
     "description" : "Standard card: Corruption is easy, you always wanted it, now I help you embrace it.",
     "colors" : [ "Green", "Black" ],

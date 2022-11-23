@@ -127,11 +127,19 @@ public class Functions {
 
                     table.get(affectedRow).remove(maxHealthCard);
 
-                    int mirrorRow = affectedRow;
-                    if (playerTurn == 0)
-                        mirrorRow += 2;
-                    else
-                        mirrorRow -= 2;
+                    int mirrorRow;
+                    if (playerTurn == 0) {
+                        if (affectedRow == 2)
+                            mirrorRow = 1;
+                        else
+                            mirrorRow = 0;
+                    }
+                    else {
+                        if (affectedRow == 0)
+                            mirrorRow = 3;
+                        else
+                            mirrorRow = 2;
+                    }
 
                     table.get(mirrorRow).add(maxHealthCard);
                 }
