@@ -3,7 +3,11 @@ package player;
 public class PlayerTurn {
     private int playerTurn;
 
-    public int getPlayerTurn() {return playerTurn;}
+    /** Get player turn */
+    public int getPlayerTurn() {
+        return playerTurn; }
 
-    public void setPlayerTurn(int playerTurn) {this.playerTurn = playerTurn;}
+    /** Set player turn */
+    public void setPlayerTurn(final int playerTurn) {
+        this.playerTurn = playerTurn; }
 }

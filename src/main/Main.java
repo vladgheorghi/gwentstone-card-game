@@ -7,11 +7,16 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import checker.CheckerConstants;
 
-import fileio.*;
+import fileio.CardInput;
+import fileio.ActionsInput;
+import fileio.StartGameInput;
+import fileio.DecksInput;
+import fileio.GameInput;
+import fileio.Input;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,11 +32,17 @@ import game.Minion;
 import functionalities.Command;
 import functionalities.Functions;
 
+import static functionalities.Constant.HERO_HEALTH;
+import static functionalities.Constant.TABLE_ROWS;
+import static functionalities.Constant.ROUND_MAX_MANA;
+
 import player.Player;
 import player.PlayerTurn;
 
+
+
 /**
- * The entry point to this homework. It runs the checker that tests your implentation.
+ * The entry point to this homework. It runs the checker that tests your implementation.
  */
 public final class Main {
     /**
@@ -87,22 +98,23 @@ public final class Main {
 
         // TODO add here the entry point to your implementation
 
-        DecksInput playerOneDecks = inputData.getPlayerOneDecks();
-        DecksInput playerTwoDecks = inputData.getPlayerTwoDecks();
-        ArrayList<GameInput> games = inputData.getGames();
+        DecksInput playerOneDecks = inputData.getPlayerOneDecks(); // Player one deck list
+        DecksInput playerTwoDecks = inputData.getPlayerTwoDecks(); // Player two deck list
+        ArrayList<GameInput> games = inputData.getGames(); // list of games
 
-        int gamesPlayed = 0;
+        int gamesPlayed = 0; // counter for games played
 
-        ArrayList<Player> players = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<>(); // list of players
         players.add(new Player()); // create player1 (index 0)
         players.add(new Player()); // create player2 (index 1)
 
-        /** List of decks for both players */
+        // List of decks for both players
         ArrayList<ArrayList<CardInput>> p1Decks = playerOneDecks.getDecks();
         ArrayList<ArrayList<CardInput>> p2Decks = playerTwoDecks.getDecks();
 
-        /** Going through each game **/
+        // Going through each game
         for (GameInput game : games) {
+            // Initializations
             StartGameInput startGame = game.getStartGame();
             ArrayList<ActionsInput> actions = game.getActions();
 
@@ -111,64 +123,72 @@ public final class Main {
             players.get(0).setGamesPlayed(gamesPlayed);
             players.get(1).setGamesPlayed(gamesPlayed);
 
-            /** Each player chooses his deck **/
+            // Each player chooses his deck by index
             int p1DeckIdx = startGame.getPlayerOneDeckIdx();
             int p2DeckIdx = startGame.getPlayerTwoDeckIdx();
 
-            /** Creating chosen decks */
+            // Creating chosen decks
             ArrayList<Card> p1ChosenDeck = new ArrayList<>();
             ArrayList<Card> p2ChosenDeck = new ArrayList<>();
 
-            for (CardInput card : p1Decks.get(p1DeckIdx))
+            // Adding cards from the deck list to the chosen deck
+            for (CardInput card : p1Decks.get(p1DeckIdx)) {
                 Functions.addCard(card, p1ChosenDeck);
+            }
 
-            for (CardInput card : p2Decks.get(p2DeckIdx))
+            for (CardInput card : p2Decks.get(p2DeckIdx)) {
                 Functions.addCard(card, p2ChosenDeck);
+            }
 
-            /** Assign each chosen deck to their specific player */
+            // Assign each chosen deck to their specific player
             players.get(0).setChosenDeck(p1ChosenDeck);
             players.get(1).setChosenDeck(p2ChosenDeck);
 
-            /** Each player chooses his hero **/
+            // Each player chooses his hero
             Hero p1ChosenHero = new Hero(startGame.getPlayerOneHero());
-            p1ChosenHero.setHealth(30);
+            p1ChosenHero.setHealth(HERO_HEALTH);
             Hero p2ChosenHero = new Hero(startGame.getPlayerTwoHero());
-            p2ChosenHero.setHealth(30);
+            p2ChosenHero.setHealth(HERO_HEALTH);
 
-            /** Assign each chosen hero to their specific player */
+            // Assign each chosen hero to their specific player
             players.get(0).setHero(p1ChosenHero);
             players.get(1).setHero(p2ChosenHero);
 
-            /** Shuffle chosen decks **/
-            Collections.shuffle(players.get(0).getChosenDeck(), new Random(startGame.getShuffleSeed()));
-            Collections.shuffle(players.get(1).getChosenDeck(), new Random(startGame.getShuffleSeed()));
+            // Shuffle chosen decks using the shuffle seed
+            Collections.shuffle(players.get(0).getChosenDeck(),
+                    new Random(startGame.getShuffleSeed()));
+            Collections.shuffle(players.get(1).getChosenDeck(),
+                    new Random(startGame.getShuffleSeed()));
 
-            /** Make Goliaths and Wardens tanks **/
+            // Make Goliaths and Wardens tanks
             for (Card card : players.get(0).getChosenDeck()) {
-                if (card.getName().equals("Goliath") || card.getName().equals("Warden"))
-                    ((Minion)card).setTank(true);
+                if (card.getName().equals("Goliath") || card.getName().equals("Warden")) {
+                    ((Minion) card).setTank(true);
+                }
             }
 
             for (Card card : players.get(1).getChosenDeck()) {
-                if (card.getName().equals("Goliath") || card.getName().equals("Warden"))
-                    ((Minion)card).setTank(true);
+                if (card.getName().equals("Goliath") || card.getName().equals("Warden")) {
+                    ((Minion) card).setTank(true);
+                }
             }
 
             int roundCounter = 1;
             int turnCounter = 0;
             PlayerTurn turn = new PlayerTurn();
-            turn.setPlayerTurn(startGame.getStartingPlayer() - 1); /** Starting player */
+            turn.setPlayerTurn(startGame.getStartingPlayer() - 1); // Starting player
 
-            /** Creating the game table with 4 rows */
+            // Creating the game table with TABLE_ROWS rows
             ArrayList<ArrayList<Card>> table = new ArrayList<>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < TABLE_ROWS; i++) {
                 table.add(new ArrayList<>());
+            }
 
-            /** Add initial mana for both players */
+            // Add initial mana for both players
             players.get(0).setMana(roundCounter);
             players.get(1).setMana(roundCounter);
 
-            /** Add first card to hand for both players */
+            // Add first card to hand for both players
             if (players.get(0).getChosenDeck().size() != 0) {
                 players.get(0).getHand().add(players.get(0).getChosenDeck().get(0));
                 players.get(0).getChosenDeck().remove(0);
@@ -179,17 +199,17 @@ public final class Main {
                 players.get(1).getChosenDeck().remove(0);
             }
 
-            /** Game starts **/
+            // Game starts
             for (ActionsInput action : actions) {
 
-                /** Handles each specified command */
+                // Handles each specified command
                 Command.commandHandle(action, players, table, turn, output, objectMapper);
 
                 if (action.getCommand().equals("endPlayerTurn")) {
                     turnCounter++;
 
-                    /** Unfroze cards that have been frozen for two turns */
-                    for (int i = 0; i < 4; i++)
+                    // Unfroze cards that have been frozen for two turns
+                    for (int i = 0; i < TABLE_ROWS; i++) {
                         for (Card card : table.get(i)) {
                             if (((Minion) card).getFrozen()) {
                                 int turnsSinceFrozen = ((Minion) card).getTurnsSinceFrozen();
@@ -201,36 +221,39 @@ public final class Main {
                                 }
                             }
                         }
+                    }
 
+                    // Both turns ended so next round starts
                     if (turnCounter == 2) {
                         turnCounter = 0;
                         roundCounter++;
 
-                        /** Cards' attack has now been reset */
-                        for (int i = 0; i < 4; i++)
+                        // Reset cards' attack
+                        for (int i = 0; i < TABLE_ROWS; i++) {
                             for (Card card : table.get(i)) {
                                 if (((Minion) card).getAttacked()) {
                                     ((Minion) card).setAttacked(false);
                                 }
                             }
+                        }
 
-                        /** Heroes' attack has now been reset */
+                        // Reset heroes' attack
                         players.get(0).getHero().setAttacked(false);
                         players.get(1).getHero().setAttacked(false);
 
-                        /** Add mana for each round to both players */
+                        // Add mana for next round to both players
                         int p1Mana = players.get(0).getMana();
                         int p2Mana = players.get(1).getMana();
 
-                        if (roundCounter < 10) {
+                        if (roundCounter < ROUND_MAX_MANA) {
                             players.get(0).setMana(p1Mana + roundCounter);
                             players.get(1).setMana(p2Mana + roundCounter);
                         } else {
-                            players.get(0).setMana(p1Mana + 10);
-                            players.get(1).setMana(p2Mana + 10);
+                            players.get(0).setMana(p1Mana + ROUND_MAX_MANA);
+                            players.get(1).setMana(p2Mana + ROUND_MAX_MANA);
                         }
 
-                        /** Adds cards to players' hands */
+                        // Adds cards to players' hands from the chosen deck
                         if (players.get(0).getChosenDeck().size() != 0) {
                             players.get(0).getHand().add(players.get(0).getChosenDeck().get(0));
                             players.get(0).getChosenDeck().remove(0);
@@ -244,6 +267,7 @@ public final class Main {
                 }
             }
 
+            // Reset player fields for next game (without how many games they played/won)
             Functions.resetPlayer(players.get(0));
             Functions.resetPlayer(players.get(1));
 

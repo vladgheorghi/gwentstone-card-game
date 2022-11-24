@@ -3,18 +3,19 @@ package game;
 import java.util.ArrayList;
 import fileio.CardInput;
 
+// class for cards (similar to CardInput - class if final so couldn't inherit it)
 public class Card {
     private int mana;
     private int attackDamage;
     private int health;
     private String description;
     private ArrayList<String> colors;
-    String name;
+    private String name;
 
-    public Card(){
+    public Card() {
     }
 
-    public Card(CardInput copyCard) {
+    public Card(final CardInput copyCard) {
         this.mana = copyCard.getMana();
         this.attackDamage = copyCard.getAttackDamage();
         this.health = copyCard.getHealth();
@@ -24,27 +25,51 @@ public class Card {
         this.name = copyCard.getName();
     }
 
-    public int getMana() {return mana;}
+    /** Get card mana */
+    public int getMana() {
+        return mana; }
 
-    public int getAttackDamage() {return attackDamage;}
+    /** Get card attack damage */
+    public int getAttackDamage() {
+        return attackDamage; }
 
-    public int getHealth() {return health;}
+    /** Get card health */
+    public int getHealth() {
+        return health; }
 
-    public String getDescription() {return description;}
+    /** Get card description */
+    public String getDescription() {
+        return description; }
 
-    public ArrayList<String> getColors() {return colors;}
+    /** Get card colors */
+    public ArrayList<String> getColors() {
+        return colors; }
 
-    public String getName() {return name;}
+    /** Get card name */
+    public String getName() {
+        return name; }
 
-    public void setMana(int mana) {this.mana = mana;}
+    /** Set card mana */
+    public void setMana(final int mana) {
+        this.mana = mana; }
 
-    public void setAttackDamage(int attackDamage) {this.attackDamage = attackDamage;}
+    /** Set card attack damage */
+    public void setAttackDamage(final int attackDamage) {
+        this.attackDamage = attackDamage; }
 
-    public void setHealth(int health) {this.health = health;}
+    /** Set card health */
+    public void setHealth(final int health) {
+        this.health = health; }
 
-    public void setDescription(String description) {this.description = description;}
+    /** Set card description */
+    public void setDescription(final String description) {
+        this.description = description; }
 
-    public void setColors(ArrayList<String> colors) {this.colors = colors;}
+    /** Set card colors */
+    public void setColors(final ArrayList<String> colors) {
+        this.colors = colors; }
 
-    public void setName(String name) {this.name = name;}
+    /** Set card name */
+    public void setName(final String name) {
+        this.name = name; }
 }
